@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# PAC CLI local metadata / secrets — do not commit auth profiles
+.pac/
+*.paccfg
+
+# Logs
+npm-debug.log*
+*.log
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
