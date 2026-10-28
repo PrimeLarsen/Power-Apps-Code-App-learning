@@ -16,6 +16,7 @@ By the end of the workshop, participants can:
 6. Use Git branching, pull requests, and versioning as part of the app lifecycle
 7. Set up CI/CD with GitHub Actions to build and deploy automatically
 8. Connect a real data source — **Dataverse or SharePoint list** — and build a CRUD app on it
+9. Use **GitHub Copilot** as a pair programmer to build faster — with review discipline
 
 ## 🗓️ Agenda (full day, ~7 hours)
 
@@ -30,6 +31,7 @@ By the end of the workshop, participants can:
 | 6 | Versioning: semver, tags, app versions, rollback | 30 min |
 | 7 | CI/CD with GitHub Actions | 45 min |
 | 8 | Connectors: build a CRUD app on Dataverse **or** SharePoint | 60 min |
+| 9 | GitHub Copilot: build faster with an AI pair programmer | 30 min |
 | — | Wrap-up & Q&A | 15 min |
 
 ## 📁 Repository structure
@@ -49,7 +51,8 @@ code-apps-workshop/
 │   ├── 05-git-for-apps.md         ← branching, PRs, code review
 │   ├── 06-versioning.md           ← semver, git tags, rollback
 │   ├── 07-ci-cd.md                ← automated builds & deploys
-│   └── 08-connectors.md           ← Dataverse or SharePoint CRUD
+│   ├── 08-connectors.md           ← Dataverse or SharePoint CRUD
+│   └── 09-copilot.md              ← GitHub Copilot as pair programmer
 ├── exercises/
 │   ├── exercise-1.md              ← first app loop
 │   ├── exercise-2.md              ← edit UI + republish
@@ -61,7 +64,7 @@ code-apps-workshop/
 
 ## 🚦 Getting started
 
-Start in [docs/00-prerequisites.md](docs/00-prerequisites.md) and follow the modules in order 0 → 8. Each module ends with a ✅ checkpoint.
+Start in [docs/00-prerequisites.md](docs/00-prerequisites.md) and follow the modules in order 0 → 9. Each module ends with a ✅ checkpoint.
 
 ## 📚 Sources
 
@@ -70,3 +73,5 @@ Start in [docs/00-prerequisites.md](docs/00-prerequisites.md) and follow the mod
 - [Connect your code app to Dataverse — Microsoft Learn](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/how-to/connect-to-dataverse)
 - [Power Platform CLI — Microsoft Learn](https://learn.microsoft.com/en-us/power-platform/developer/cli/introduction)
 - [PowerAppsCodeApps — official samples & templates (GitHub)](https://github.com/microsoft/PowerAppsCodeApps)
+- [GitHub Copilot in VS Code — documentation](https://code.visualstudio.com/docs/copilot/overview)
+
