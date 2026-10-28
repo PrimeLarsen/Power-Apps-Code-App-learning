@@ -16,7 +16,7 @@ Manual pushes are fine for dev, but teams deploy with pipelines. This module tur
 name: Build validation
 on:
   push:
-    branches: [main]
+    branches: [main}}
   pull_request:
 
 jobs:
@@ -62,11 +62,11 @@ Once this passes, enable it as a **required status check** on +BQ+main+BQ+ (modu
       - name: Authenticate
         run: |
           pac auth create \
-            --applicationId ${{{ secrets.POWERPLATFORM_CLIENT_ID }} \
-            --clientSecret ${{{ secrets.POWERPLATFORM_CLIENT_SECRET }} \
-            --tenant ${{{ secrets.POWERPLATFORM_TENANT_ID }}
+            --applicationId ${{ secrets.POWERPLATFORM_CLIENT_ID }} \
+            --clientSecret ${{ secrets.POWERPLATFORM_CLIENT_SECRET }} \
+            --tenant ${{ secrets.POWERPLATFORM_TENANT_ID }}
       - name: Push code app to test
-        run: pac code push --environment ${{{ secrets.TEST_ENV_URL }}
+        run: pac code push --environment ${{ secrets.TEST_ENV_URL }}
 +BQ+BQ+BQ+
 
 > 📌 The +BQ+pac code push+BQ+ parameters may vary slightly by CLI version — check +BQ+pac code push --help+BQ+ and Microsoft's Power Platform build tools docs before running in anger.
@@ -78,17 +78,17 @@ Combine with versioning (module 6): only deploy to prod when a **tagged release*
 +BQ+BQ+BQ+yaml
 on:
   push:
-    tags: ['v*.*.*']
+    tags: ['v*.*.*'}}
 +BQ+BQ+BQ+
 
 Full flow at a glance:
 
 +BQ+BQ+BQ+mermaid
 flowchart LR
-    A[feature branch] -->|PR + review| B[main]
-    B -->|CI build ✓| C[dev / test]
-    C -->|git tag v1.2.0| D[GitHub Release]
-    D -->|CI: tag push| E[prod]
+    A[feature branch}} -->|PR + review| B[main}}
+    B -->|CI build ✓| C[dev / test}}
+    C -->|git tag v1.2.0| D[GitHub Release}}
+    D -->|CI: tag push| E[prod}}
 +BQ+BQ+BQ+
 
 ## 5. Guardrails worth agreeing on as a team
