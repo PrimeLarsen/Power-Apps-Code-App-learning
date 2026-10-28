@@ -12,7 +12,7 @@ By the end of the workshop, participants can:
 2. Scaffold a Code App project from Microsoft's official template
 3. Connect the project to a Power Platform environment
 4. Develop and test locally with hot reload
-5. Publish the app to Power Apps with +BQ+pac code push+BQ+
+5. Publish the app to Power Apps with `pac code push`
 6. Use Git branching, pull requests, and versioning as part of the app lifecycle
 7. Set up CI/CD with GitHub Actions to build and deploy automatically
 8. Connect a real data source — **Dataverse or SharePoint list** — and build a CRUD app on it
@@ -23,7 +23,7 @@ By the end of the workshop, participants can:
 |---|---|---|
 | 0 | Prerequisites & setup | 30 min |
 | 1 | Environment connection & enabling Code Apps | 30 min |
-| 2 | Project scaffolding + +BQ+pac code init+BQ+ | 30 min |
+| 2 | Project scaffolding + `pac code init` | 30 min |
 | 3 | Local development (React + hot reload) | 45 min |
 | 4 | Build & publish to Power Apps | 45 min |
 | 5 | Git for apps: branching, PRs, protected main | 45 min |
@@ -34,7 +34,7 @@ By the end of the workshop, participants can:
 
 ## 📁 Repository structure
 
-+BQ+BQ+BQ+
+`BQ`
 code-apps-workshop/
 ├── README.md                      ← you are here
 ├── .github/
@@ -57,7 +57,7 @@ code-apps-workshop/
 │   ├── exercise-4.md              ← versioning & release flow
 │   └── exercise-5.md              ← CRUD app on Dataverse or SharePoint
 └── .gitignore
-+BQ+BQ+BQ+
+`BQ`
 
 ## 🚦 Getting started
 

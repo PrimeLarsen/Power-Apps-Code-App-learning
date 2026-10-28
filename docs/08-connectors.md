@@ -7,11 +7,11 @@ This module makes the app *useful*: participants connect a real data source and 
 
 ## 1. How connector access works in a Code App
 
-You don't hand-write REST calls. The Power Apps CLI **generates a typed TypeScript model and service** for each data source into +BQ+src/generated/+BQ+. You import the service and call its methods — with IntelliSense, types, and paging/delegation handled for you.
+You don't hand-write REST calls. The Power Apps CLI **generates a typed TypeScript model and service** for each data source into `src/generated/`. You import the service and call its methods — with IntelliSense, types, and paging/delegation handled for you.
 
-> 🧠 Mindset for the team: +BQ+pa app add data-source+BQ+ is your "Add data source" button from Studio — except the output is reviewable, versioned TypeScript.
+> 🧠 Mindset for the team: `pa app add data-source` is your "Add data source" button from Studio — except the output is reviewable, versioned TypeScript.
 
-> ⚠️ **Note:** the data-source commands use the **npm-based +BQ+pa+BQ+ CLI** from the Power Apps client library for code apps (v1.0.4+), not +BQ+pac code+BQ+. Install/use it from your project root — it will eventually replace the +BQ+pac code+BQ+ commands. Publishing still goes through +BQ+npm run build+BQ+ + +BQ+pac code push+BQ+ (or +BQ+pa app push+BQ+ in newer versions).
+> ⚠️ **Note:** the data-source commands use the **npm-based `pa` CLI** from the Power Apps client library for code apps (v1.0.4+), not `pac code`. Install/use it from your project root — it will eventually replace the `pac code` commands. Publishing still goes through `npm run build` + `pac code push` (or `pa app push` in newer versions).
 
 ## 2. Path A — Dataverse (native table)
 
@@ -19,18 +19,18 @@ You don't hand-write REST calls. The Power Apps CLI **generates a typed TypeScri
 
 From your project root:
 
-+BQ+BQ+BQ+bash
+`BQ`bash
 pa app add data-source --connector dataverse --table <table-logical-name>
-+BQ+BQ+BQ+
+`BQ`
 
 No connection ID or dataset needed — the app talks to the Dataverse of the environment it's initialized against. This generates:
 
-- +BQ+src/generated/models/<Table>Model.ts+BQ+ — the typed data model
-- +BQ+src/generated/services/<Table>Service.ts+BQ+ — typed CRUD methods
+- `src/generated/models/<Table>Model.ts` — the typed data model
+- `src/generated/services/<Table>Service.ts` — typed CRUD methods
 
 ### Generated CRUD methods
 
-+BQ+BQ+BQ+ts
+`BQ`ts
 import { AccountsService } from "./generated/services/AccountsService";
 import type { Accounts } from "./generated/models/AccountsModel";
 
@@ -53,9 +53,9 @@ await AccountsService.update(accountId, { name: "Updated Name" });
 
 // DELETE
 await AccountsService.delete(accountId);
-+BQ+BQ+BQ+
+`BQ`
 
-The +BQ+getAll+BQ+ options (+BQ+filter+BQ+, +BQ+select+BQ+, +BQ+orderBy+BQ+, +BQ+top+BQ+, +BQ+maxPageSize+BQ+, +BQ+skipToken+BQ+) are **delegated to the server** — like +BQ+Filter+BQ+/+BQ+Sort+BQ+ in Power Fx, not client-side filtering.
+The `getAll` options (`filter`, `select`, `orderBy`, `top`, `maxPageSize`, `skipToken`) are **delegated to the server** — like `Filter`/`Sort` in Power Fx, not client-side filtering.
 
 **Supported:** CRUD, option set labels, table metadata, single-valued lookups, image/file upload & download (preview), paging.
 **Not yet supported:** polymorphic lookups, FetchXML, alternate keys, metadata CRUD.
@@ -66,51 +66,51 @@ The +BQ+getAll+BQ+ options (+BQ+filter+BQ+, +BQ+select+BQ+, +BQ+orderBy+BQ+, +BQ
 
 ### Step 1: Create a connection (once)
 
-+BQ+BQ+BQ+bash
+`BQ`bash
 # create and save the returned Connection ID
 pa connection create
 
 # or list existing connections
 pa connection list
-+BQ+BQ+BQ+
+`BQ`
 
 ### Step 2: Add the list as a data source
 
-For SharePoint, +BQ+--table+BQ+ is the **list name** (URL-encoded if it has spaces) and +BQ+--dataset+BQ+ is the **site URL**:
+For SharePoint, `--table` is the **list name** (URL-encoded if it has spaces) and `--dataset` is the **site URL**:
 
-+BQ+BQ+BQ+bash
+`BQ`bash
 pa app add data-source \
   --connector "shared_sharepointonline" \
   --connection-id <your-connection-id> \
   --table "Travel%20Request" \
   --dataset "https://contoso.sharepoint.com/sites/WorkshopSite"
-+BQ+BQ+BQ+
+`BQ`
 
 Not sure about names? Discover them first:
 
-+BQ+BQ+BQ+bash
+`BQ`bash
 pa connection list-datasets --connector "shared_sharepointonline" --connection-id <id>
 pa connection list-tables  --connector "shared_sharepointonline" --connection-id <id> --dataset <site-url>
-+BQ+BQ+BQ+
+`BQ`
 
-Or just run +BQ+pa app add data-source+BQ+ with no parameters in an interactive terminal — the CLI lists connections, datasets, and lets you pick tables from a searchable list. **Recommended for the workshop.**
+Or just run `pa app add data-source` with no parameters in an interactive terminal — the CLI lists connections, datasets, and lets you pick tables from a searchable list. **Recommended for the workshop.**
 
 ### Step 3 (optional): SharePoint actions
 
 SharePoint also supports **actions** (not just list CRUD), e.g. "Create file", "Get attachments". Add them alongside the table:
 
-+BQ+BQ+BQ+bash
+`BQ`bash
 pa app add data-source \
   --connector "shared_sharepointonline" \
   --connection-id <id> \
   --as action
-+BQ+BQ+BQ+
+`BQ`
 
 ## 4. Build the same UI on either path
 
 Because both paths generate a typed service, the React code is nearly identical. Example — a task list that works with either:
 
-+BQ+BQ+BQ+tsx
+`BQ`tsx
 import { useEffect, useState } from "react";
 import { WorkshopTasksService } from "./generated/services/WorkshopTasksService";
 
@@ -146,14 +146,14 @@ function TaskList() {
 }
 
 export default TaskList;
-+BQ+BQ+BQ+
+`BQ`
 
 ## 5. Housekeeping commands
 
-+BQ+BQ+BQ+bash
+`BQ`bash
 pa app refresh data-source --name <data-source-name>   # regenerate after schema changes
 pa app remove data-source --connector <connector-id> --name <name>
-+BQ+BQ+BQ+
+`BQ`
 
 When someone adds a column to the SharePoint list or Dataverse table, refresh regenerates the typed model — the code equivalent of refreshing a data source in Studio.
 
@@ -164,7 +164,7 @@ Binding an app directly to a developer's personal connection breaks when moving 
 ## 7. Known limitations
 
 - **Excel Online (Business/OneDrive) connectors are not supported** — migrate spreadsheet-as-database apps to SharePoint lists, SQL, or Dataverse first
-- SharePoint connection: +BQ+--table+BQ+ = list name, +BQ+--dataset+BQ+ = site URL; names are case-sensitive
-- Dataverse native: one table per +BQ+add data-source+BQ+ command
+- SharePoint connection: `--table` = list name, `--dataset` = site URL; names are case-sensitive
+- Dataverse native: one table per `add data-source` command
 
 ✅ **Checkpoint:** your app shows live data from Dataverse or SharePoint, and you can create a record from the UI.

@@ -2,17 +2,17 @@
 
 ## 1. Build the production assets
 
-+BQ+BQ+BQ+bash
+`BQ`bash
 npm run build
-+BQ+BQ+BQ+
+`BQ`
 
 The script compiles TypeScript and places the Vite output in the configured build folder.
 
 ## 2. Publish to the environment
 
-+BQ+BQ+BQ+bash
+`BQ`bash
 pac code push
-+BQ+BQ+BQ+
+`BQ`
 
 On success, the PAC CLI returns a **Power Apps URL** — open it and test the published app.
 
@@ -34,16 +34,16 @@ In the Power Apps portal: select the app → **Share** → add users/groups.
 |---|---|
 | "Code apps not enabled" | An admin must enable Code Apps on the environment (module 1) |
 | Push fails | Check license, permissions, and selected environment |
-| Wrong app version | Run +BQ+npm run build+BQ+ again, then +BQ+pac code push+BQ+ |
-| Wrong environment | +BQ+pac env select+BQ+ before pushing |
+| Wrong app version | Run `npm run build` again, then `pac code push` |
+| Wrong environment | `pac env select` before pushing |
 
 ## 5. The complete loop (memorize this!)
 
-+BQ+BQ+BQ+bash
+`BQ`bash
 npm run dev      # develop locally
 npm run build    # build
 pac code push    # publish a new version
-+BQ+BQ+BQ+
+`BQ`
 
 That's the entire Code App lifecycle in three commands. 🎉
 
