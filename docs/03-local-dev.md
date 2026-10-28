@@ -2,9 +2,9 @@
 
 ## 1. Start the dev server
 
-`BQ`bash
+```bash
 npm run dev
-`BQ`
+```
 
 Vite starts a local development server. Open the URL shown as **Local Play**.
 
@@ -14,9 +14,9 @@ Vite starts a local development server. Open the URL shown as **Local Play**.
 
 Open the main component in `src/` and make a small, visible change — for example:
 
-`BQ`tsx
+```tsx
 <h1>Hello from our first Code App! 👋</h1>
-`BQ`
+```
 
 Save. Vite reloads automatically (hot reload) — which is the whole point: **edit code, see the result instantly.**
 
@@ -24,7 +24,7 @@ Save. Vite reloads automatically (hot reload) — which is the whole point: **ed
 
 Add a button with state, for example in `src/App.tsx`:
 
-`BQ`tsx
+```tsx
 import { useState } from "react";
 
 function App() {
@@ -40,15 +40,15 @@ function App() {
 }
 
 export default App;
-`BQ`
+```
 
 ## 4. Commit as you go
 
-`BQ`bash
+```bash
 git switch -c feature/counter
 git add .
 git commit -m "feat: add counter component"
-`BQ`
+```
 
 ## 5. Troubleshooting 🔧
 

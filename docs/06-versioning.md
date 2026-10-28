@@ -27,11 +27,11 @@ If you use conventional commits (module 5), the mapping is mechanical:
 
 ## 3. Tagging a release in Git
 
-`BQ`bash
+```bash
 # annotate the release commit
 git tag -a v1.1.0 -m "Release 1.1.0: todo list + sharing"
 git push origin v1.1.0
-`BQ`
+```
 
 On GitHub: **Releases → Draft a new release** → choose the tag → add release notes. Good release notes answer: *what changed, and what should a tester check first?*
 
@@ -39,16 +39,16 @@ On GitHub: **Releases → Draft a new release** → choose the tag → add relea
 
 Make the Git version visible in the app, e.g. via an environment variable baked in at build time:
 
-`BQ`ts
+```ts
 const APP_VERSION = import.meta.env.VITE_APP_VERSION ?? "dev";
 // render it in a footer:
 <footer>v{APP_VERSION}</footer>
-`BQ`
+```
 
-`BQ`bash
+```bash
 VITE_APP_VERSION=1.1.0 npm run build
 pac code push
-`BQ`
+```
 
 Now anyone seeing the app in Power Apps knows exactly which Git tag it came from. No more "which version is live?"
 
@@ -64,11 +64,11 @@ Practice this deliberately — rollback is a muscle you want trained *before* th
 
 ## 6. Multi-environment promotion (the full picture)
 
-`BQ`
+```
 dev environment   ← developers push here freely (pac code push)
 test environment  ← only from CI, after PR merge
 prod environment  ← only from CI, only from tagged releases (v*.*.*)
-`BQ`
+```
 
 Rule of thumb: **manual pushes only to dev; everything further up moves through CI** (module 7).
 

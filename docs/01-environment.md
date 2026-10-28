@@ -18,15 +18,15 @@ Code Apps must be turned on per environment. A Power Platform admin or environme
 
 In your terminal:
 
-`BQ`bash
+```bash
 pac auth create
-`BQ`
+```
 
 Sign in with the account that has access to the environment. Working across multiple tenants? Use `pac auth create --name <profile>` and switch with `pac auth select --name <profile>`.
 
 ## 3. Select the environment
 
-`BQ`bash
+```bash
 # list all your environments
 pac env list
 
@@ -35,6 +35,6 @@ pac env select --environment <environment-id-or-url>
 
 # verify
 pac auth list
-`BQ`
+```
 
 ✅ **Checkpoint:** `pac auth list` shows the correct environment.

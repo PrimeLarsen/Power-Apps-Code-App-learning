@@ -15,19 +15,19 @@ Code Apps are plain text files (React/TypeScript). That means you can use **ever
 
 ## 2. Recommended branching model (simple trunk-based)
 
-`BQ`
+```
 main                → always releasable (protected branch)
   └── feature/xyz   → one branch per task
   └── fix/abc       → small fixes
-`BQ`
+```
 
-`BQ`bash
+```bash
 git switch -c feature/todo-list
 # ...code, commit...
 git add .
 git commit -m "feat: add todo list"
 git push -u origin feature/todo-list
-`BQ`
+```
 
 **Rules of the road (recommended for the team):**
 
@@ -58,13 +58,13 @@ This makes "merge = reviewed" a guarantee, not a convention.
 
 ## 5. Resolving a merge conflict (hands-on)
 
-`BQ`bash
+```bash
 git switch main && git pull
 git switch feature/my-branch
 git rebase main
 # conflict? open the file, pick the changes, then:
 git add . && git rebase --continue
 git push --force-with-lease
-`BQ`
+```
 
 ✅ **Checkpoint:** your branch is merged into `main` via an approved pull request.

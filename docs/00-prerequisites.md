@@ -24,12 +24,12 @@ Install these from the Extensions marketplace:
 
 Open a terminal in VS Code and run:
 
-`BQ`bash
+```bash
 node --version    # v20+ (LTS)
 npm --version
 git --version
 pac --version      # Microsoft PowerPlatform CLI
-`BQ`
+```
 
 If all four succeed, you're ready. If `pac` fails, see Microsoft's installation guide (link above).
 

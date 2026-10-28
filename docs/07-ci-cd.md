@@ -12,7 +12,7 @@ Manual pushes are fine for dev, but teams deploy with pipelines. This module tur
 
 `.github/workflows/build-validation.yml` runs on every push and pull request:
 
-`BQ`yaml
+```yaml
 name: Build validation
 on:
   push:
@@ -30,7 +30,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-`BQ`
+```
 
 Once this passes, enable it as a **required status check** on `main` (module 5, step 3).
 
@@ -47,7 +47,7 @@ Once this passes, enable it as a **required status check** on `main` (module 5, 
 
 ### Deploy job (sketch)
 
-`BQ`yaml
+```yaml
   deploy-test:
     needs: build
     if: github.ref == 'refs/heads/main'
@@ -67,7 +67,7 @@ Once this passes, enable it as a **required status check** on `main` (module 5, 
             --tenant ${{ secrets.POWERPLATFORM_TENANT_ID }}
       - name: Push code app to test
         run: pac code push --environment ${{ secrets.TEST_ENV_URL }}
-`BQ`
+```
 
 > 📌 The `pac code push` parameters may vary slightly by CLI version — check `pac code push --help` and Microsoft's Power Platform build tools docs before running in anger.
 
@@ -75,21 +75,21 @@ Once this passes, enable it as a **required status check** on `main` (module 5, 
 
 Combine with versioning (module 6): only deploy to prod when a **tagged release** is created:
 
-`BQ`yaml
+```yaml
 on:
   push:
     tags: ['v*.*.*']
-`BQ`
+```
 
 Full flow at a glance:
 
-`BQ`mermaid
+```mermaid
 flowchart LR
     A[feature branch] -->|PR + review| B[main]
     B -->|CI build ✓| C[dev / test]
     C -->|git tag v1.2.0| D[GitHub Release]
     D -->|CI: tag push| E[prod]
-`BQ`
+```
 
 ## 5. Guardrails worth agreeing on as a team
 

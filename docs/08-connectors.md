@@ -19,9 +19,9 @@ You don't hand-write REST calls. The Power Apps CLI **generates a typed TypeScri
 
 From your project root:
 
-`BQ`bash
+```bash
 pa app add data-source --connector dataverse --table <table-logical-name>
-`BQ`
+```
 
 No connection ID or dataset needed — the app talks to the Dataverse of the environment it's initialized against. This generates:
 
@@ -30,7 +30,7 @@ No connection ID or dataset needed — the app talks to the Dataverse of the env
 
 ### Generated CRUD methods
 
-`BQ`ts
+```ts
 import { AccountsService } from "./generated/services/AccountsService";
 import type { Accounts } from "./generated/models/AccountsModel";
 
@@ -53,7 +53,7 @@ await AccountsService.update(accountId, { name: "Updated Name" });
 
 // DELETE
 await AccountsService.delete(accountId);
-`BQ`
+```
 
 The `getAll` options (`filter`, `select`, `orderBy`, `top`, `maxPageSize`, `skipToken`) are **delegated to the server** — like `Filter`/`Sort` in Power Fx, not client-side filtering.
 
@@ -66,32 +66,32 @@ The `getAll` options (`filter`, `select`, `orderBy`, `top`, `maxPageSize`, `skip
 
 ### Step 1: Create a connection (once)
 
-`BQ`bash
+```bash
 # create and save the returned Connection ID
 pa connection create
 
 # or list existing connections
 pa connection list
-`BQ`
+```
 
 ### Step 2: Add the list as a data source
 
 For SharePoint, `--table` is the **list name** (URL-encoded if it has spaces) and `--dataset` is the **site URL**:
 
-`BQ`bash
+```bash
 pa app add data-source \
   --connector "shared_sharepointonline" \
   --connection-id <your-connection-id> \
   --table "Travel%20Request" \
   --dataset "https://contoso.sharepoint.com/sites/WorkshopSite"
-`BQ`
+```
 
 Not sure about names? Discover them first:
 
-`BQ`bash
+```bash
 pa connection list-datasets --connector "shared_sharepointonline" --connection-id <id>
 pa connection list-tables  --connector "shared_sharepointonline" --connection-id <id> --dataset <site-url>
-`BQ`
+```
 
 Or just run `pa app add data-source` with no parameters in an interactive terminal — the CLI lists connections, datasets, and lets you pick tables from a searchable list. **Recommended for the workshop.**
 
@@ -99,18 +99,18 @@ Or just run `pa app add data-source` with no parameters in an interactive termin
 
 SharePoint also supports **actions** (not just list CRUD), e.g. "Create file", "Get attachments". Add them alongside the table:
 
-`BQ`bash
+```bash
 pa app add data-source \
   --connector "shared_sharepointonline" \
   --connection-id <id> \
   --as action
-`BQ`
+```
 
 ## 4. Build the same UI on either path
 
 Because both paths generate a typed service, the React code is nearly identical. Example — a task list that works with either:
 
-`BQ`tsx
+```tsx
 import { useEffect, useState } from "react";
 import { WorkshopTasksService } from "./generated/services/WorkshopTasksService";
 
@@ -146,14 +146,14 @@ function TaskList() {
 }
 
 export default TaskList;
-`BQ`
+```
 
 ## 5. Housekeeping commands
 
-`BQ`bash
+```bash
 pa app refresh data-source --name <data-source-name>   # regenerate after schema changes
 pa app remove data-source --connector <connector-id> --name <name>
-`BQ`
+```
 
 When someone adds a column to the SharePoint list or Dataverse table, refresh regenerates the typed model — the code equivalent of refreshing a data source in Studio.
 

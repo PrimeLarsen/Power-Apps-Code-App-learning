@@ -34,7 +34,7 @@ By the end of the workshop, participants can:
 
 ## 📁 Repository structure
 
-`BQ`
+```
 code-apps-workshop/
 ├── README.md                      ← you are here
 ├── .github/
@@ -57,7 +57,7 @@ code-apps-workshop/
 │   ├── exercise-4.md              ← versioning & release flow
 │   └── exercise-5.md              ← CRUD app on Dataverse or SharePoint
 └── .gitignore
-`BQ`
+```
 
 ## 🚦 Getting started
 

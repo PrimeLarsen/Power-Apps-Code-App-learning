@@ -2,17 +2,17 @@
 
 ## 1. Build the production assets
 
-`BQ`bash
+```bash
 npm run build
-`BQ`
+```
 
 The script compiles TypeScript and places the Vite output in the configured build folder.
 
 ## 2. Publish to the environment
 
-`BQ`bash
+```bash
 pac code push
-`BQ`
+```
 
 On success, the PAC CLI returns a **Power Apps URL** — open it and test the published app.
 
@@ -39,11 +39,11 @@ In the Power Apps portal: select the app → **Share** → add users/groups.
 
 ## 5. The complete loop (memorize this!)
 
-`BQ`bash
+```bash
 npm run dev      # develop locally
 npm run build    # build
 pac code push    # publish a new version
-`BQ`
+```
 
 That's the entire Code App lifecycle in three commands. 🎉
 

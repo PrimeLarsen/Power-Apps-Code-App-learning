@@ -11,16 +11,16 @@
 
 **Dataverse path:**
 
-`BQ`bash
+```bash
 pa app add data-source --connector dataverse --table <table-logical-name>
-`BQ`
+```
 
 **SharePoint path:**
 
-`BQ`bash
+```bash
 pa connection create                  # save the Connection ID
 pa app add data-source                # interactive mode — pick your connection, site, and list
-`BQ`
+```
 
 Inspect what was generated in `src/generated/services/` — open the service file and find the typed methods.
 
@@ -38,10 +38,10 @@ Test locally with `npm run dev`. Data operations work in Local Play too.
 
 ## Part C: Publish & share (15 min)
 
-`BQ`bash
+```bash
 npm run build
 pac code push
-`BQ`
+```
 
 **Definition of done:** a colleague can open your app, add a task, tick it off, and the change is visible in Dataverse or the SharePoint list.
 
