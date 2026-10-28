@@ -62,11 +62,11 @@ Once this passes, enable it as a **required status check** on +BQ+main+BQ+ (modu
       - name: Authenticate
         run: |
           pac auth create \
-            --applicationId ${{ { secrets.POWERPLATFORM_CLIENT_ID }} \
-            --clientSecret ${{ { secrets.POWERPLATFORM_CLIENT_SECRET }} \
-            --tenant ${{ { secrets.POWERPLATFORM_TENANT_ID }}
+            --applicationId ${{{ secrets.POWERPLATFORM_CLIENT_ID }} \
+            --clientSecret ${{{ secrets.POWERPLATFORM_CLIENT_SECRET }} \
+            --tenant ${{{ secrets.POWERPLATFORM_TENANT_ID }}
       - name: Push code app to test
-        run: pac code push --environment ${{ { secrets.TEST_ENV_URL }}
+        run: pac code push --environment ${{{ secrets.TEST_ENV_URL }}
 +BQ+BQ+BQ+
 
 > 📌 The +BQ+pac code push+BQ+ parameters may vary slightly by CLI version — check +BQ+pac code push --help+BQ+ and Microsoft's Power Platform build tools docs before running in anger.
