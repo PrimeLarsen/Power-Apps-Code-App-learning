@@ -1,4 +1,4 @@
-# Module 8 — Connectors: Dataverse or SharePoint
+# Module 9 — Connectors: Dataverse or SharePoint
 
 This module makes the app *useful*: participants connect a real data source and build CRUD against it. Everyone follows the same pattern, but each participant (or pair) **picks their own data source**:
 

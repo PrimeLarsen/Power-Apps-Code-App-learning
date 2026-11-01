@@ -1,4 +1,4 @@
-# Module 7 — CI/CD with GitHub Actions
+# Module 8 — CI/CD with GitHub Actions
 
 Manual pushes are fine for dev, but teams deploy with pipelines. This module turns "merge to main → app updated" into an automated flow.
 
@@ -32,7 +32,7 @@ jobs:
       - run: npm run build
 ```
 
-Once this passes, enable it as a **required status check** on `main` (module 5, step 3).
+Once this passes, enable it as a **required status check** on `main` (module 6, step 3).
 
 ## 3. Deploy to an environment with a service principal
 
@@ -73,7 +73,7 @@ Once this passes, enable it as a **required status check** on `main` (module 5, 
 
 ## 4. Release-gated deploys to prod
 
-Combine with versioning (module 6): only deploy to prod when a **tagged release** is created:
+Combine with versioning (module 7): only deploy to prod when a **tagged release** is created:
 
 ```yaml
 on:

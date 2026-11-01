@@ -1,4 +1,4 @@
-# Module 6 — Versioning: app versions, semver & rollback
+# Module 7 — Versioning: app versions, semver & rollback
 
 ## 1. Two layers of versioning
 
@@ -19,7 +19,7 @@ Version your releases as `MAJOR.MINOR.PATCH`:
 | `MINOR` | New feature, backwards compatible | 1.0.1 → 1.1.0 |
 | `MAJOR` | Breaking change or major milestone | 1.1.0 → 2.0.0 |
 
-If you use conventional commits (module 5), the mapping is mechanical:
+If you use conventional commits (module 6), the mapping is mechanical:
 
 - `fix: ...` → PATCH
 - `feat: ...` → MINOR
@@ -70,6 +70,6 @@ test environment  ← only from CI, after PR merge
 prod environment  ← only from CI, only from tagged releases (v*.*.*)
 ```
 
-Rule of thumb: **manual pushes only to dev; everything further up moves through CI** (module 7).
+Rule of thumb: **manual pushes only to dev; everything further up moves through CI** (module 8).
 
 ✅ **Checkpoint:** you've tagged a release and can answer "which Git commit is running in test right now?"

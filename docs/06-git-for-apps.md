@@ -1,4 +1,4 @@
-# Module 5 — Git for apps: branching, PRs & code review
+# Module 6 — Git for apps: branching, PRs & code review
 
 ## 1. Why this is gold for a team
 
@@ -42,7 +42,7 @@ Settings → Branches → Add rule for `main`:
 
 - ✅ Require a pull request before merging
 - ✅ Require approval (1 reviewer is fine to start)
-- ✅ Require status checks: select your CI build (module 7)
+- ✅ Require status checks: select your CI build (module 8)
 - ✅ Block force pushes
 
 This makes "merge = reviewed" a guarantee, not a convention.
@@ -54,7 +54,7 @@ This makes "merge = reviewed" a guarantee, not a convention.
 3. Write a short description; link the task; add a reviewer
 4. The reviewer comments / approves — small PRs get better reviews
 5. Merge (squash merges keep history readable)
-6. **After merge:** run `npm run build` + `pac code push` to deploy — or let CI do it (module 7)
+6. **After merge:** run `npm run build` + `pac code push` to deploy — or let CI do it (module 8)
 
 ## 5. Resolving a merge conflict (hands-on)
 

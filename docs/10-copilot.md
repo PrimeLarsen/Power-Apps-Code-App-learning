@@ -1,4 +1,4 @@
-# 09 — GitHub Copilot as your pair programmer 🤖
+# Module 10 — GitHub Copilot as your pair programmer 🤖
 
 You don't have to write every line yourself. GitHub Copilot is built into VS Code and works directly in your Code App project — it's excellent for React/TypeScript scaffolding, and Code Apps are exactly the kind of modern TypeScript codebase it shines at.
 
@@ -10,7 +10,7 @@ Code Apps are standard React + Vite + TypeScript. That means Copilot can help wi
 - **Typing data models** — paste a JSON sample of your Dataverse/SharePoint rows and ask for an interface
 - **Refactoring** — extract repeated UI into components, clean up hooks
 - **Explaining unfamiliar code** — highlight the `CodeAppServices` usage and ask "what does this do?"
-- **Writing tests and CI tweaks** — useful in modules 07 and 08
+- **Writing tests and CI tweaks** — useful in modules 08 and 09
 
 ## Setup (2 minutes)
 
@@ -28,7 +28,7 @@ Treat Copilot like a junior developer with infinite patience:
 - **Iterate**: first answer is a draft — refine with follow-ups
 - **Review everything**: it's your PR, your app, your responsibility
 
-## Example: accelerate module 8
+## Example: accelerate module 9
 
 When you build the CRUD app, try this prompt in Copilot Chat:
 
@@ -42,7 +42,7 @@ Then review, adjust to your table's actual schema names, and test locally (`npm 
 
 - **Always review before committing** — Copilot can hallucinate API names or invent columns that don't exist in your table
 - **Never paste secrets, connection strings, or auth profiles** into prompts
-- Generated code still goes through the same **branch → PR → CI** flow from module 5 — Copilot doesn't skip ALM
+- Generated code still goes through the same **branch → PR → CI** flow from module 6 — Copilot doesn't skip ALM
 - Generated code must comply with the same licenses and policies as your own code
 
 ## ✅ Checkpoint

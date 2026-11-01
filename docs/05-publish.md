@@ -1,4 +1,4 @@
-# Module 4 — Build & publish to Power Apps
+# Module 5 — Build & publish to Power Apps
 
 ## 1. Build the production assets
 

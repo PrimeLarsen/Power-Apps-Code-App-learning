@@ -1,64 +1,35 @@
-# Exercise 5 — Build an app with a connector (60 min)
+# Exercise 5 — Versioning & release flow (30 min)
 
-**Goal:** Turn your app into a real data app. **Pick one path** — A or B — and build the same thing. Pairs are encouraged to split: one takes Dataverse, one takes SharePoint, and you compare notes at the end.
+**Goal:** Make "which version is live?" an answerable question — and practice a rollback.
 
-## Setup (workshop lead provides)
+## Part A: Version the app
 
-- **Path A (Dataverse):** a Dataverse table in the workshop environment, e.g. `cr123_workshoptasks` with columns: Title (text), Done (Yes/No), Due (date)
-- **Path B (SharePoint):** a SharePoint site with a list, e.g. "Workshop Tasks" with columns: Title, Done (Yes/No), Due (date)
+1. Add a version footer to your app (module 7, step 4):
+   ```ts
+   const APP_VERSION = import.meta.env.VITE_APP_VERSION ?? "dev";
+   ```
+2. Build with an explicit version and publish:
+   ```bash
+   VITE_APP_VERSION=1.0.0 npm run build && pac code push
+   ```
+3. Verify the version is visible in the running app in Power Apps
 
-## Part A: Add the data source (10 min)
+## Part B: Tag a release
 
-**Dataverse path:**
+1. Make one small `feat:` change and one `fix:` change (two commits, conventional messages)
+2. Decide the correct next version number per semver rules and discuss in the group
+3. Tag and push:
+   ```bash
+   git tag -a v1.1.0 -m "Release 1.1.0"
+   git push origin v1.1.0
+   ```
+4. Create a GitHub Release from the tag with release notes
 
-```bash
-pa app add data-source --connector dataverse --table <table-logical-name>
-```
+## Part C: Rollback drill 🚨
 
-**SharePoint path:**
+1. Break something on purpose (a `feat:` that crashes the app) and publish it
+2. Roll back: `git revert <commit>` → rebuild → `pac code push`
+3. Alternative: restore an earlier app version in make.powerapps.com
+4. Debrief: which rollback path was faster, and when would you use each?
 
-```bash
-pa connection create                  # save the Connection ID
-pa app add data-source                # interactive mode — pick your connection, site, and list
-```
-
-Inspect what was generated in `src/generated/services/` — open the service file and find the typed methods.
-
-## Part B: Build the CRUD UI (35 min)
-
-Using the generated service, build:
-
-1. **List:** show all tasks (use `getAll` with `top: 50`)
-2. **Create:** input + button that creates a task
-3. **Update:** toggle the "Done" column on a task (update **only the changed field**)
-4. **Delete:** remove a task from the list
-5. **Filter/sort bonus:** add a search box using the `filter` option — remember it's **delegated**, so don't filter client-side
-
-Test locally with `npm run dev`. Data operations work in Local Play too.
-
-## Part C: Publish & share (15 min)
-
-```bash
-npm run build
-pac code push
-```
-
-**Definition of done:** a colleague can open your app, add a task, tick it off, and the change is visible in Dataverse or the SharePoint list.
-
-## Compare notes in plenum
-
-| Question | Dataverse path | SharePoint path |
-|---|---|---|
-| Connection setup | none (native) | connection ID + site + list |
-| Where does data live? | Dataverse of the environment | SharePoint site |
-| Generated code | same pattern | same pattern |
-| Server-side filter/sort? | delegated | delegated |
-| When would you pick this? | enterprise app, relational data, security roles | quick team tool, files/collaboration, existing site |
-
----
-
-## Bonus (for the fast ones)
-
-- Add `pa app refresh data-source` to your notes — then have the workshop lead add a column to the table/list, refresh, and use the new column in code
-- Try adding SharePoint **actions** (`--as action`) alongside the list
-- Look up what a **connection reference** is and sketch how it would change your deploy pipeline (module 8, section 6)
+**Definition of done:** you can point at any running app and name the Git tag it came from.
