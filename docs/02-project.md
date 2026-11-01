@@ -40,7 +40,7 @@ pac code init \
   --environment https://<your-environment>.crm.dynamics.com
 ```
 
-> 📝 **Note:** starting with the Power Apps client library for code apps v1.0.4+, there is also an npm-based CLI (`pa`) that will eventually replace the `pac code` commands. This workshop uses the classic `pac code` workflow for init/publish because it matches most existing material — and the `pa` CLI in module 8 for data sources.
+> 📝 **Note:** starting with the Power Apps client library for code apps v1.0.4+, there is also an npm-based CLI (`pa`) that will eventually replace the `pac code` commands. This workshop uses the classic `pac code` workflow for init/publish because it matches most existing material — and the `pa` CLI in module 9 for data sources.
 
 ## 4. Commit the initial project
 
