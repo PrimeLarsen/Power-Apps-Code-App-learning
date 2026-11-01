@@ -40,7 +40,7 @@ Code Apps ultimately require:
 - **Participants (developers):** Power Apps Premium, or pay-as-you-go enabled on the environment
 - **End users of the app:** Power Apps Premium, an App Pass, pay-as-you-go, or auto-claim enabled
 
-Check with your admin that the workshop environment is covered — otherwise publishing in module 4 will fail.
+Check with your admin that the workshop environment is covered — otherwise publishing in module 5 will fail.
 
 ## 5. GitHub account
 
