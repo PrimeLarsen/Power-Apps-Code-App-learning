@@ -1,19 +1,32 @@
-# Exercise 3 — Team flow with pull requests (45 min)
+# Exercise 3 — Build the Workshop Tasks app UI (45 min)
 
-**Goal:** Simulate how a team collaborates on the same app.
+**Goal:** Build a complete, multi-component app UI in React, following module 4. No data source yet (that's exercise 6) — today the tasks live in memory, so focus on React, not plumbing.
 
-1. Make sure your app code lives in the workshop GitHub repository
-2. Create a feature branch: `git switch -c feature/<your-name>-footer`
-3. Add a footer component with your name
-4. Commit and push the branch
-5. **Reviewer swap:** review your pair's PR and leave at least one comment
-6. Merge after approval
+## Part A: The components (25 min)
 
-**Definition of done:** at least one merged PR per person, approved by someone else.
+1. `src/components/TaskCard.tsx` — checkbox + title + delete button (props: `task`, `onToggle`, `onDelete`)
+2. `src/components/TaskForm.tsx` — input + Add button, with validation: title must be at least 3 characters, error message shown inline
+3. `src/App.tsx` — state and handlers: add, toggle, delete, and a done-counter ("X of Y done")
+
+## Part B: Test the loop (10 min)
+
+`npm run dev` → open Local Play → add, tick, delete — and try to submit an empty title to see your validation fire. Fix any TypeScript errors before moving on.
+
+## Part C: Commit (10 min)
+
+```bash
+git switch -c feature/workshop-tasks-ui
+git add .
+git commit -m "feat: workshop tasks UI with form validation"
+```
+
+**Definition of done:** a colleague can add a task, tick it done, and delete it — and the counters update — without you running `pac code push`.
 
 ---
 
 ## Bonus (for the fast ones)
 
-- Try merging two branches that touch the same file — and resolve the conflict (see module 5, step 5)
-- Add a check that `npm run build` passes in the PR (this comes for free once module 7's workflow is enabled)
+- Add a "Show all / Only open" toggle — like `Filter()` on a gallery (client-side `.filter()` is fine here, the data is local)
+- Add a "Due" date to tasks and sort the list by it
+- Move the counter into its own `TaskStats` component that receives the tasks as props
+- Explain to your pair, in one sentence each: what is the React equivalent of `UpdateContext`, `Gallery`, and `Patch`?
